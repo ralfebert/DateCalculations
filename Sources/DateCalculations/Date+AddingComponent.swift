@@ -23,31 +23,9 @@
 import Foundation
 
 public extension Date {
-    func adding(years: Int) -> Date {
-        Calendar.current.date(byAdding: .year, value: years, to: self)!
-    }
-
-    func adding(months: Int) -> Date {
-        Calendar.current.date(byAdding: .month, value: months, to: self)!
-    }
-
-    func adding(weeks: Int) -> Date {
-        Calendar.current.date(byAdding: .weekOfYear, value: weeks, to: self)!
-    }
-
-    func adding(days: Int) -> Date {
-        Calendar.current.date(byAdding: .day, value: days, to: self)!
-    }
-
-    func adding(hours: Int) -> Date {
-        Calendar.current.date(byAdding: .hour, value: hours, to: self)!
-    }
-
-    func adding(minutes: Int) -> Date {
-        Calendar.current.date(byAdding: .minute, value: minutes, to: self)!
-    }
-
-    func adding(seconds: Int) -> Date {
-        Calendar.current.date(byAdding: .second, value: seconds, to: self)!
+    func adding(years: Int? = nil, months: Int? = nil, weeks: Int? = nil, days: Int? = nil, hours: Int? = nil, minutes: Int? = nil, seconds: Int? = nil) -> Date {
+        let calendar = Calendar.current
+        let components = DateComponents(year: years, month: months, day: days, hour: hours, minute: minutes, second: seconds, weekOfYear: weeks)
+        return calendar.date(byAdding: components, to: self)!
     }
 }
